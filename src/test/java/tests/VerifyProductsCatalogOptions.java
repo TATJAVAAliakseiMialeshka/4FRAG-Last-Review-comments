@@ -14,7 +14,7 @@ public class VerifyProductsCatalogOptions extends MainPage {
         WishListPage wishListPage =  new MainPage()
                 .openHomePage()
                 .chooseProductCategory()
-          //      .checkBrandOfChosenProduct()
+               // .checkBrandOfChosenProduct()
                 .filloutInputFormaxPrice()
                 .clickOnTheProductTypeDropDown()
                 .chooseProductFromProductTypeDropDown()

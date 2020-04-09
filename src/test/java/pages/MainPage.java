@@ -26,8 +26,10 @@ public class MainPage extends BasePageClass {
     private static final By ADD_TO_CAMPARASION_LIST_ICON_XPATH = By.xpath("//div[contains(@class,'center-block')]//a[contains(@class,'item-compare-btn')]");
 
     private static final By CATEGORY_SECTION_MOUSE_XPATH = By.xpath("//span[contains(text(), 'Игровые мыши')]");
-
-    private static final By CHECKBOX_BRAND_OF_CHOSEN_PRODUCT_XPATH = By.xpath("//label[contains(@id, 'm25')");
+//fixed xpath
+    //anyway, its invisible because of some elements overlapping probably.
+    //if you want to interact with it, use JavascriptExecutor
+    private static final By CHECKBOX_BRAND_OF_CHOSEN_PRODUCT_XPATH = By.xpath("//input[contains(@id, 'm25')]");
 
     private static final By INPUT_MAX_PRICE = By.id("price-max");
 
@@ -44,6 +46,10 @@ public class MainPage extends BasePageClass {
     private static final By ADDO_TO_WISH_LIST_BUTTON_XPATH = By.xpath("//div[contains(@class, 'center-block')]//a[contains(@class,'item-favourite-small-btn')]");
 
     private static final By BOOKMARKS_PAGE_BUTTON_XPATH = By.xpath("//span[text() = 'Закладки']");
+
+    // don't use absolutely the same xpath! parameterize them!
+    // ex:
+      private static final String HEADER_PANEL_BUTTON_XPATH_PATTERN = "//a[text() = '%s']";
 
     private static final By DELIVERY_PAGE_BUTTON_XPATH = By.xpath("//a[text() = 'Доставка']");
 
@@ -166,9 +172,9 @@ public class MainPage extends BasePageClass {
         return new LoginPage();
     }
 
-
-    public DeliveryPage openDeliveryPage() {
-        WebElement deliveryPage = waitForExpectedElement(DELIVERY_PAGE_BUTTON_XPATH);
+    // fixed. do parametrization similar for other places where applicable (where the same xpath witch differs only with text values are used
+    public DeliveryPage openDeliveryPage(String buttonText) {
+        WebElement deliveryPage = waitForExpectedElement(By.xpath(String.format(HEADER_PANEL_BUTTON_XPATH_PATTERN, buttonText)));
         deliveryPage.click();
         waitPageIsLoadedAndJQueryIsProcessed();
         return new DeliveryPage();

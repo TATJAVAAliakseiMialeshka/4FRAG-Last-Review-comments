@@ -30,7 +30,7 @@ public class BasePageClass {
 
 
     public WebDriver initializeDriver() {
-        System.setProperty("webdriver.chrome.driver", "D:\\Selenium Drivers\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:\\epam\\Java\\selenium\\chromedriver\\80.0.3987.106\\chromedriver.exe");
         driver = new ChromeDriver();
         maximizeWindow();
         return driver;

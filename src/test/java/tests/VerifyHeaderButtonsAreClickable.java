@@ -2,13 +2,22 @@ package tests;
 
 
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.*;
 
-
+//class name don't match to what we do here
+//we test that we can open pages from header tabs
+//I'd call it like TestHeaderButtonsNavigateToCorrectPage
 public class VerifyHeaderButtonsAreClickable extends MainPage {
 
-
+//we not just test that page is displayed. because the page opens not by direct url through browser. we test that after specific control is clicked - specific page is opened
+    // ex: testLoginButtonNavigatesToLoginPage
+    // testLoginPageOpensAfterDeliveryPageIsClicked
+    // testLoginPageCanBeOpenedWithLoginButton
+    // verifyLoginPageDestinationPage
+    // etc
+    // fix methods name according to what they do.
     @Test
     public void testLoginWindowIsDisplayed() {
         LoginPage loginPage = new MainPage()
@@ -17,13 +26,14 @@ public class VerifyHeaderButtonsAreClickable extends MainPage {
         Assert.assertTrue(loginPage.isLoginPageHeaderDisplayed());
     }
 
-
+    @Parameters({ "tab-btn-text-delivery" })
     @Test
-    public void testDeliveryPageIsDisplayed() {
+    public void testDeliveryPageIsDisplayed(String param) {
 
         DeliveryPage deliveryPage = new MainPage()
                 .openHomePage()
-                .openDeliveryPage();
+//send param either from xml or directly from the test. don't hardcode the same xpathes on page objects
+                .openDeliveryPage(param);
         Assert.assertTrue(deliveryPage.isDeliveryPageHeaderDisplayed());
     }
 

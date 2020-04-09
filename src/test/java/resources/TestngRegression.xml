@@ -5,6 +5,7 @@
 	</listeners>
 
 	<test name="RegressionTests">
+		<parameter name="tab-btn-text-delivery" value="Доставка"/>
 		<classes>
 			<class name="tests.VerifyLoginFunctionality"/>
 			<class name="tests.VerifyProductIsAddedToCard"/>

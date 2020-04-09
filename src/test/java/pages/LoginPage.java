@@ -9,7 +9,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.logging.Logger;
 
+// minor comment
+//"sun.*" packages should not be used
+// I see that it works but you'd better use standard Log4g2, SLF4G, or at least standard from java.util
 import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 
 public class LoginPage extends MainPage {
@@ -19,6 +23,8 @@ public class LoginPage extends MainPage {
     private static final By PASSWORD_FIELD = By.id("exampleInputPassword1");
 
 
+    // please create utils or other package and create there static class for work with properties
+    // because properties could potentially be called from different places, not from jusdt specific page
     private String getParamFromProperty(String propertyName) {
         FileInputStream fis;
         Properties properties = new Properties();
